@@ -8,21 +8,21 @@ const experience = [
     company: "Kinective",
     role: "Software Development Engineering Intern",
     date: "JUN 2026 / NOW",
-    copy: "Own integration work across enterprise systems, turning ambiguous requirements into reliable services, automated tests, and delivery pipelines.",
-    proof: ["20+ workflows", "80%+ coverage", "Java / Kotlin"],
+    copy: "Build Java and Spring Boot integrations for Corelation KeyBridge, with Cucumber and Kotlin coverage across critical workflows, resilient GraphQL handling, and CI quality gates.",
+    proof: ["20+ workflows", "80%+ coverage", "Java / Spring Boot"],
   },
   {
     company: "Future Today Inc.",
     role: "Software Engineer Intern",
     date: "AUG / DEC 2025",
-    copy: "Improved high-scale content infrastructure for millions of users, strengthening data quality and release confidence across cloud and database workflows.",
-    proof: ["5M+ users", "100+ defects blocked", "10K+ records fixed"],
+    copy: "Shipped real-time content synchronization for HappyKids and built validation systems across Roku, Fire TV, mobile, and connected-TV releases.",
+    proof: ["5M+ users", "100+ defects blocked", "10K+ records repaired"],
   },
   {
     company: "Arizona State University",
     role: "Software Engineer Researcher",
-    date: "AUG 2025 / APR 2026",
-    copy: "Built repeatable ML research infrastructure for large-scale experimentation, parallel compute, and trustworthy performance comparisons.",
+    date: "JAN / MAY 2024",
+    copy: "Built deterministic ML research infrastructure across eight A100 GPUs, running thousands of experiments to characterize optimizer performance and accuracy.",
     proof: ["6,000 experiments", "84.3% throughput", "99% consistency"],
   },
 ];
@@ -30,31 +30,64 @@ const experience = [
 const projects = [
   {
     number: "01",
-    date: "VILLAGEHACKS",
-    type: "1st place winner",
-    title: "SlackDB",
-    copy: "A Slack-native SQL approval system with AI risk scores, rollback plans, second-approver controls, and live migration metrics.",
-    tags: ["FastAPI", "PostgreSQL", "Redis", "Slack Bolt"],
-    outcome: "SQL changes become reviewable, reversible, and visible to the whole team.",
+    date: "FEB / MAY 2026",
+    type: "Clinical research",
+    title: "Gene Editing Trials",
+    copy: "A clinical-trial intelligence platform that normalizes ClinicalTrials.gov data into fast, filterable research workflows with comparison and CSV export.",
+    tags: ["Next.js", "AWS Lambda", "DynamoDB", "ClinicalTrials.gov"],
+    outcome: "303+ trial records, 18 recruiting studies, and adoption by 100+ researchers.",
+    links: [
+      { label: "Open live platform", href: "https://crisprtrials.duckdns.org/" },
+    ],
   },
   {
     number: "02",
-    date: "CLOUD AUTOMATION",
-    type: "FinOps system",
-    title: "FinOps Agent",
-    copy: "Finds AWS waste, checks reliability policy, then creates reviewable Terraform changes and approval trails instead of touching production directly.",
-    tags: ["AWS", "Terraform", "GitHub API", "Docker"],
-    outcome: "$12,480 in modeled monthly savings, with humans kept in control.",
+    date: "APR 2026",
+    type: "1st place / VillageHacks",
+    title: "SlackDB",
+    copy: "A Slack-native SQL approval system with AI risk scores, rollback plans, second-approver controls, and live migration metrics.",
+    tags: ["FastAPI", "PostgreSQL", "Redis", "Slack Bolt"],
+    outcome: "Won 1st place at VillageHacks; sustained 20 requests/sec with sub-500ms p95 latency.",
+    links: [
+      { label: "Open live demo", href: "https://slackdb.vercel.app/" },
+      { label: "View source", href: "https://github.com/AayushP123/slackdb" },
+    ],
   },
   {
     number: "03",
-    date: "OPEN SOURCE",
-    type: "Microsoft Kiota",
-    title: "Webhook Models",
-    copy: "Added OpenAPI webhook schema model generation to Microsoft's C# generator and shipped regression tests for referenced and inline schemas.",
+    date: "JUN 2026",
+    type: "Merged open source",
+    title: "Microsoft Kiota",
+    copy: "Improved OpenAPI parsing diagnostics in Microsoft Kiota while preserving exception behavior, then added regression coverage for malformed enum flags.",
     tags: ["C#", ".NET", "xUnit", "OpenAPI"],
-    outcome: "Merged contribution backed by 2,190 passing tests.",
-    href: "https://github.com/microsoft/kiota/pull/7943",
+    outcome: "Merged into Microsoft Kiota after maintainer review and full regression validation.",
+    links: [
+      { label: "View merged PR", href: "https://github.com/microsoft/kiota/pull/7760" },
+    ],
+  },
+  {
+    number: "04",
+    date: "JAN / APR 2026",
+    type: "Systems programming",
+    title: "NES 6502 Emulator",
+    copy: "A cycle-aware Nintendo Entertainment System emulator implementing the 6502 CPU, PPU rendering, DMA stalls, memory-mapped I/O, and cartridge loading.",
+    tags: ["Rust", "6502", "winit", "iNES"],
+    outcome: "Runs Mapper 0 ROMs at 256x240 and validates CPU behavior against nestest traces.",
+    links: [
+      { label: "View source", href: "https://github.com/AayushP123/NES-Emulator" },
+    ],
+  },
+  {
+    number: "05",
+    date: "AUG 2025 / MAY 2026",
+    type: "ML research",
+    title: "Modified DoWG",
+    copy: "A custom PyTorch optimizer study combining adaptive step sizing, EMA weight swaps, deterministic training, and CUDA-accelerated convergence sweeps.",
+    tags: ["PyTorch", "CUDA", "NumPy", "ResNet-18"],
+    outcome: "Reproducible CIFAR-10 experiments made optimizer behavior measurable and comparable.",
+    links: [
+      { label: "Open notebook", href: "https://colab.research.google.com/drive/1Uv9eyc7KvKnYFxlBVmFXh9tQ3sQd-ddP?usp=sharing" },
+    ],
   },
 ];
 
@@ -63,20 +96,28 @@ const skills = [
   { name: "Python", mark: "PY", category: "Languages" },
   { name: "Kotlin", mark: "KT", category: "Languages" },
   { name: "TypeScript", mark: "TS", category: "Languages" },
+  { name: "JavaScript", mark: "JS", category: "Languages" },
+  { name: "Rust", mark: "RS", category: "Languages" },
+  { name: "C / C++", mark: "C++", category: "Languages" },
+  { name: "SQL", mark: "SQL", category: "Languages" },
   { name: "C#", mark: "C#", category: "Languages" },
+  { name: "React", mark: "RE", category: "Frontend" },
+  { name: "Next.js", mark: "NX", category: "Frontend" },
   { name: "Spring Boot", mark: "SB", category: "Backend" },
   { name: "FastAPI", mark: "FA", category: "Backend" },
   { name: ".NET", mark: "NT", category: "Backend" },
   { name: "GraphQL", mark: "GQ", category: "Backend" },
   { name: "AWS", mark: "AWS", category: "Cloud" },
   { name: "Docker", mark: "DK", category: "Cloud" },
-  { name: "Terraform", mark: "TF", category: "Cloud" },
-  { name: "PostgreSQL", mark: "PG", category: "Data / AI" },
+  { name: "GitHub Actions", mark: "CI", category: "Cloud" },
+  { name: "Vercel", mark: "VC", category: "Cloud" },
+  { name: "MySQL", mark: "MY", category: "Data / AI" },
+  { name: "DynamoDB", mark: "DY", category: "Data / AI" },
   { name: "Redis", mark: "RD", category: "Data / AI" },
   { name: "PyTorch", mark: "PT", category: "Data / AI" },
 ];
 
-const skillFilters = ["All", "Languages", "Backend", "Cloud", "Data / AI"];
+const skillFilters = ["All", "Languages", "Frontend", "Backend", "Cloud", "Data / AI"];
 const heroWords = ["ENGINEER", "BUILDER", "RESEARCHER", "SHIPPER"];
 
 export default function Home() {
@@ -95,10 +136,6 @@ export default function Home() {
     const introSeen = window.sessionStorage.getItem("ap-intro-seen") === "true";
     let scrollFrame = 0;
     let pointerFrame = 0;
-
-    if (introSeen || reducedMotion) {
-      setIntroActive(false);
-    }
 
     const introTimer = window.setTimeout(() => {
       setIntroActive(false);
@@ -204,7 +241,7 @@ export default function Home() {
           <p className="hero-summary">Backend systems, cloud platforms, AI/ML, data infrastructure, and developer tooling built to hold up outside the demo.</p>
           <div className="hero-actions">
             <a href="#projects">View projects</a>
-            <a href="https://www.linkedin.com/in/aayush-pandey-511827378/" target="_blank" rel="noreferrer">Let&apos;s connect</a>
+            <a href="/Aayush-Pandey-Resume-2026.pdf" target="_blank" rel="noreferrer">View resume</a>
           </div>
         </div>
 
@@ -217,16 +254,16 @@ export default function Home() {
           <h2 id="about-title">About me <em>/ behind the systems.</em></h2>
         </div>
         <div className="about-grid">
-          <p className="about-lead reveal">I turn ambiguous problems into <strong>reliable products</strong>, moving comfortably from architecture and APIs to cloud infrastructure, ML experiments, and polished delivery.</p>
+          <p className="about-lead reveal">I turn ambitious ideas into <strong>reliable products</strong>, moving comfortably across full-stack development, cloud systems, machine learning, developer tools, and low-level engineering.</p>
           <div className="about-copy reveal">
             <p>I care about software that is observable, reviewable, reversible, and easy for the next engineer to understand.</p>
             <p>Currently an SDE Intern at Kinective and an Electrical Engineering student at Arizona State University, graduating May 2028.</p>
           </div>
           <div className="capability-grid reveal" aria-label="Engineering capabilities">
-            <article><span>01</span><h3>Product engineering</h3><p>Discover, design, and ship useful software.</p></article>
+            <article><span>01</span><h3>Full-stack products</h3><p>Useful interfaces backed by thoughtful systems.</p></article>
             <article><span>02</span><h3>Backend and cloud</h3><p>Services, APIs, data flows, and infrastructure.</p></article>
-            <article><span>03</span><h3>AI/ML systems</h3><p>Experiments and evaluation that produce evidence.</p></article>
-            <article><span>04</span><h3>Reliable delivery</h3><p>Testable, observable, reversible releases.</p></article>
+            <article><span>03</span><h3>AI and data</h3><p>Experiments and evaluation that produce evidence.</p></article>
+            <article><span>04</span><h3>Systems and tooling</h3><p>Low-level software and tools engineers can trust.</p></article>
           </div>
         </div>
       </section>
@@ -267,7 +304,11 @@ export default function Home() {
               <p>{project.copy}</p>
               <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
               <div className="project-outcome"><span>Impact</span><p>{project.outcome}</p></div>
-              {project.href && <a className="project-link" href={project.href} target="_blank" rel="noreferrer">View contribution <span aria-hidden="true">↗</span></a>}
+              <div className="project-links" aria-label={`${project.title} links`}>
+                {project.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label} <span aria-hidden="true">↗</span></a>
+                ))}
+              </div>
             </article>
           ))}
         </div>

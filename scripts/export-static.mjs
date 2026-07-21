@@ -36,5 +36,10 @@ await cp(new URL("../dist/client/assets/", import.meta.url), new URL("assets/", 
   recursive: true,
 });
 await cp(new URL("../dist/client/og.png", import.meta.url), new URL("og.png", outputDirectory));
+await cp(new URL("../dist/client/og-devhq.png", import.meta.url), new URL("og-devhq.png", outputDirectory));
+await cp(
+  new URL("../dist/client/Aayush-Pandey-Resume-2026.pdf", import.meta.url),
+  new URL("Aayush-Pandey-Resume-2026.pdf", outputDirectory),
+);
 
 console.log("Static portfolio exported to public-static/.");
