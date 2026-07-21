@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const imageUrl = `${protocol}://${host}/og.png`;
+  const imageUrl = `${protocol}://${host}/og-devhq.png`;
 
   return {
     title: "Aayush Pandey — Software Engineer",
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Aayush Pandey — Software Engineer",
       description: "Backend systems, cloud infrastructure, ML research, and open-source engineering.",
-      images: [{ url: imageUrl, width: 1731, height: 909, alt: "Aayush Pandey software engineering portfolio" }],
+      images: [{ url: imageUrl, width: 1672, height: 941, alt: "Aayush Pandey software engineering portfolio" }],
     },
     twitter: {
       card: "summary_large_image",

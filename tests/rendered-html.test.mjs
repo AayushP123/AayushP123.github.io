@@ -32,15 +32,15 @@ test("server-renders Aayush's portfolio", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Aayush Pandey/);
-  assert.match(html, /AAYUSH/);
-  assert.match(html, /PANDEY/);
+  assert.match(html, /Aayush/);
+  assert.match(html, /Pandey/);
   assert.match(html, /5M\+/);
   assert.match(html, /SlackDB/);
   assert.match(html, /FinOps Agent/);
   assert.match(html, /Microsoft Kiota/);
   assert.match(html, /github\.com\/AayushP123/);
   assert.match(html, /linkedin\.com\/in\/aayush-pandey-511827378/);
-  assert.match(html, /http:\/\/localhost\/og\.png/);
+  assert.match(html, /http:\/\/localhost\/og-devhq\.png/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|SkeletonPreview/);
 });
 
@@ -52,12 +52,13 @@ test("removes starter-only assets and dependencies", async () => {
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /className="projects-stage"/);
-  assert.match(page, /03 \/ EXPERIENCE/);
-  assert.match(page, /04 \/ PROJECTS/);
+  assert.match(page, /className="projects panel-section"/);
+  assert.match(page, /02 \/ EXPERIENCE/);
+  assert.match(page, /03 \/ PROJECTS/);
   assert.match(page, /className="cursor-spotlight"/);
-  assert.match(page, /1st place \/ VillageHacks/);
-  assert.doesNotMatch(page, /projects-sticky/);
+  assert.match(page, /1st place winner/);
+  assert.match(page, /<Starfield \/>/);
+  assert.match(page, /Filter technical skills/);
   assert.match(page, /prefers-reduced-motion/);
   assert.doesNotMatch(styles, /scroll-behavior:\s*smooth/);
   assert.match(layout, /generateMetadata/);
