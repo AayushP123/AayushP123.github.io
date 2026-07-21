@@ -69,6 +69,8 @@ test("removes starter-only assets and dependencies", async () => {
   assert.match(page, /Filter technical skills/);
   assert.match(page, /prefers-reduced-motion/);
   assert.doesNotMatch(styles, /scroll-behavior:\s*smooth/);
+  assert.match(styles, /body\s*{[^}]*overflow-x:\s*clip/s);
+  assert.doesNotMatch(styles, /body\s*{[^}]*overflow-x:\s*hidden/s);
   assert.match(layout, /generateMetadata/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await access(new URL("../public/Aayush-Pandey-Resume-2026.pdf", import.meta.url));
