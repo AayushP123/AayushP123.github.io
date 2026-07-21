@@ -52,6 +52,8 @@ test("removes starter-only assets and dependencies", async () => {
   ]);
 
   assert.match(page, /className="projects-stage"/);
+  assert.match(page, /WHAT I CAN DO/);
+  assert.doesNotMatch(page, /projects-sticky/);
   assert.match(page, /prefers-reduced-motion/);
   assert.match(layout, /generateMetadata/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
