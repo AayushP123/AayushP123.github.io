@@ -45,9 +45,10 @@ test("server-renders Aayush's portfolio", async () => {
 });
 
 test("removes starter-only assets and dependencies", async () => {
-  const [page, layout, packageJson] = await Promise.all([
+  const [page, layout, styles, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
@@ -55,6 +56,7 @@ test("removes starter-only assets and dependencies", async () => {
   assert.match(page, /WHAT I CAN DO/);
   assert.doesNotMatch(page, /projects-sticky/);
   assert.match(page, /prefers-reduced-motion/);
+  assert.doesNotMatch(styles, /scroll-behavior:\s*smooth/);
   assert.match(layout, /generateMetadata/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(access(new URL("app\/_sites-preview", templateRoot)));
