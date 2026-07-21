@@ -75,6 +75,7 @@ export default function Home() {
     const root = document.documentElement;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let ticking = false;
+    let cursorFrame = 0;
 
     const update = () => {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -91,6 +92,18 @@ export default function Home() {
       }
     };
 
+    const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      cancelAnimationFrame(cursorFrame);
+      cursorFrame = requestAnimationFrame(() => {
+        root.style.setProperty("--cursor-x", `${event.clientX}px`);
+        root.style.setProperty("--cursor-y", `${event.clientY}px`);
+        root.classList.add("cursor-active");
+      });
+    };
+
+    const onPointerLeave = () => root.classList.remove("cursor-active");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -105,10 +118,19 @@ export default function Home() {
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    if (!reducedMotion) {
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+      document.addEventListener("pointerleave", onPointerLeave);
+      window.addEventListener("blur", onPointerLeave);
+    }
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("pointermove", onPointerMove);
+      document.removeEventListener("pointerleave", onPointerLeave);
+      window.removeEventListener("blur", onPointerLeave);
+      cancelAnimationFrame(cursorFrame);
       observer.disconnect();
     };
   }, []);
@@ -116,6 +138,7 @@ export default function Home() {
   return (
     <main>
       <div className="progress" aria-hidden="true" />
+      <div className="cursor-glow" aria-hidden="true" />
 
       <header className="topbar">
         <a className="monogram" href="#top" aria-label="Aayush Pandey, back to top">
@@ -173,12 +196,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="intro section-pad">
-        <div className="section-index reveal">01 / OPERATING PRINCIPLE</div>
-        <p className="statement reveal">
+      <section className="intro section-pad" aria-labelledby="about-title">
+        <div className="section-index reveal">01 / ABOUT</div>
+        <h2 className="statement reveal" id="about-title">
           Good software is more than code that runs. It is <em>observable</em>, reviewable,
           reversible, and built around the people who have to trust it.
-        </p>
+        </h2>
         <div className="intro-aside reveal">
           <span>Currently</span>
           <p>SDE Intern at Kinective + Electrical Engineering at ASU, graduating May 2028.</p>
@@ -187,8 +210,8 @@ export default function Home() {
 
       <section className="capabilities section-pad" aria-labelledby="capabilities-title">
         <div className="capabilities-head reveal">
-          <span className="section-index">02 / WHAT I CAN DO</span>
-          <h2 id="capabilities-title">From unclear idea<br />to working system.</h2>
+          <span className="section-index">02 / CAPABILITIES</span>
+          <h2 id="capabilities-title">What I can do.</h2>
         </div>
         <div className="capabilities-list">
           {capabilities.map((capability, index) => (
@@ -210,10 +233,10 @@ export default function Home() {
       <section className="experience section-pad" id="experience">
         <div className="section-head reveal">
           <div>
-            <span className="section-index">03 / FIELD NOTES</span>
-            <h2>Work that moved<br />the needle.</h2>
+            <span className="section-index">03 / EXPERIENCE</span>
+            <h2>Experience.</h2>
           </div>
-          <p>Three roles. Different domains. Same obsession: make the system clearer, faster, and safer to ship.</p>
+          <p>Software engineering roles across financial technology, streaming media, and university research.</p>
         </div>
 
         <div className="timeline">
@@ -236,7 +259,10 @@ export default function Home() {
 
       <section className="projects-stage" id="projects">
         <div className="projects-label reveal">
-          <span className="section-index">04 / SELECTED BUILDS</span>
+          <div>
+            <span className="section-index">04 / PROJECTS</span>
+            <h2>Selected projects.</h2>
+          </div>
           <span className="projects-count">01 — 03</span>
         </div>
         <div className="project-track">
@@ -301,10 +327,10 @@ export default function Home() {
 
       <section className="research section-pad">
         <div className="research-grid" aria-hidden="true" />
-        <div className="section-index reveal">05 / RESEARCH MODE</div>
+        <div className="section-index reveal">05 / ML RESEARCH</div>
         <div className="research-copy reveal">
           <span className="eyebrow">ASU / PyTorch / A100</span>
-          <h2>6,000 runs.<br />One honest result.</h2>
+          <h2>Machine learning research.</h2>
           <p>Parallelized data work across 8+ A100 GPUs, raised throughput 84.3%, and built deterministic checks that kept optimizer comparisons at 99% consistency.</p>
         </div>
         <div className="research-readout reveal" aria-label="Research metrics">
@@ -316,7 +342,7 @@ export default function Home() {
 
       <section className="stack section-pad">
         <div className="section-head reveal">
-          <div><span className="section-index">06 / TOOLBOX</span><h2>Built across<br />the stack.</h2></div>
+          <div><span className="section-index">06 / TECHNICAL STACK</span><h2>Tools &amp;{" "}<br />technologies.</h2></div>
           <p>I pick tools for the constraint, not the résumé keyword. These are the ones I can put to work.</p>
         </div>
         <div className="stack-list reveal">
@@ -330,7 +356,7 @@ export default function Home() {
 
       <footer id="contact">
         <div className="footer-top">
-          <span className="section-index">07 / SAY HELLO</span>
+          <span className="section-index">07 / CONTACT</span>
           <p>Have a hard problem, an ambitious team, or an internship with real ownership?</p>
         </div>
         <a className="email-link" href="mailto:apand121@asu.edu">LET&apos;S BUILD<span>.</span></a>

@@ -53,7 +53,9 @@ test("removes starter-only assets and dependencies", async () => {
   ]);
 
   assert.match(page, /className="projects-stage"/);
-  assert.match(page, /WHAT I CAN DO/);
+  assert.match(page, /03 \/ EXPERIENCE/);
+  assert.match(page, /04 \/ PROJECTS/);
+  assert.match(page, /className="cursor-glow"/);
   assert.doesNotMatch(page, /projects-sticky/);
   assert.match(page, /prefers-reduced-motion/);
   assert.doesNotMatch(styles, /scroll-behavior:\s*smooth/);
