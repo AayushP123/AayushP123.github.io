@@ -138,7 +138,7 @@ export default function Home() {
   return (
     <main>
       <div className="progress" aria-hidden="true" />
-      <div className="cursor-glow" aria-hidden="true" />
+      <div className="cursor-spotlight" aria-hidden="true" />
 
       <header className="topbar">
         <a className="monogram" href="#top" aria-label="Aayush Pandey, back to top">
@@ -180,19 +180,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="signal" aria-label="Selected impact metrics">
-        <div className="signal-track">
-          <span><strong>5M+</strong> users served</span>
-          <i>×</i>
-          <span><strong>6K</strong> ML experiments</span>
-          <i>×</i>
-          <span><strong>1ST</strong> at VillageHacks</span>
-          <i>×</i>
-          <span><strong>3</strong> domains shipped</span>
-          <i>×</i>
-          <span><strong>5M+</strong> users served</span>
-          <i>×</i>
-          <span><strong>6K</strong> ML experiments</span>
+      <section className="impact" aria-labelledby="impact-title">
+        <div className="impact-heading">
+          <span className="section-index">KEY IMPACT</span>
+          <h2 id="impact-title">Results at a glance.</h2>
+        </div>
+        <div className="impact-grid">
+          <article className="impact-lime">
+            <strong>1ST</strong>
+            <span>VillageHacks winner</span>
+          </article>
+          <article className="impact-orange">
+            <strong>5M+</strong>
+            <span>users reached</span>
+          </article>
+          <article className="impact-blue">
+            <strong>6,000</strong>
+            <span>ML experiments</span>
+          </article>
+          <article className="impact-cyan">
+            <strong>84.3%</strong>
+            <span>throughput gain</span>
+          </article>
         </div>
       </section>
 
@@ -268,7 +277,7 @@ export default function Home() {
         <div className="project-track">
             <article className="project-card project-lime reveal">
               <div className="project-copy">
-                <div className="project-meta"><span>01</span><span>Hackathon winner</span></div>
+                <div className="project-meta"><span>01</span><span>1st place / VillageHacks</span></div>
                 <h3>SlackDB</h3>
                 <p>A Slack-native SQL approval system with AI risk scores, rollback plans, second-approver controls, and live migration metrics.</p>
                 <div className="tags"><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Slack Bolt</span></div>
