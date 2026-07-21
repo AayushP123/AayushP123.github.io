@@ -68,6 +68,9 @@ test("removes starter-only assets and dependencies", async () => {
   assert.match(page, /<Starfield \/>/);
   assert.match(page, /Filter technical skills/);
   assert.match(page, /prefers-reduced-motion/);
+  assert.match(page, /function navigateToSection/);
+  assert.match(page, /window\.history\.replaceState/);
+  assert.match(page, /onClick={navigateToSection}/);
   assert.doesNotMatch(styles, /scroll-behavior:\s*smooth/);
   assert.match(styles, /body\s*{[^}]*overflow-x:\s*clip/s);
   assert.doesNotMatch(styles, /body\s*{[^}]*overflow-x:\s*hidden/s);

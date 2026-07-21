@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { type MouseEvent, useEffect, useMemo, useState } from "react";
 import Starfield from "./starfield";
 
 const experience = [
@@ -120,6 +120,22 @@ const skills = [
 const skillFilters = ["All", "Languages", "Frontend", "Backend", "Cloud", "Data / AI"];
 const heroWords = ["ENGINEER", "BUILDER", "RESEARCHER", "SHIPPER"];
 
+function navigateToSection(event: MouseEvent<HTMLAnchorElement>) {
+  const hash = event.currentTarget.getAttribute("href");
+  if (!hash?.startsWith("#")) return;
+
+  const target = document.querySelector(hash);
+  if (!(target instanceof HTMLElement)) return;
+
+  event.preventDefault();
+  const scrollOffset = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - scrollOffset;
+
+  window.scrollTo({ top: Math.max(0, targetTop), behavior: "auto" });
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  event.currentTarget.blur();
+}
+
 export default function Home() {
   const [activeSkill, setActiveSkill] = useState("All");
   const [wordIndex, setWordIndex] = useState(0);
@@ -213,14 +229,14 @@ export default function Home() {
       </div>
 
       <header className="nav-shell">
-        <a className="nav-brand" href="#home" aria-label="Aayush Pandey, home">AP<span>.</span></a>
+        <a className="nav-brand" href="#home" onClick={navigateToSection} aria-label="Aayush Pandey, home">AP<span>.</span></a>
         <nav aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+          <a href="#home" onClick={navigateToSection}>Home</a>
+          <a href="#about" onClick={navigateToSection}>About</a>
+          <a href="#experience" onClick={navigateToSection}>Experience</a>
+          <a href="#projects" onClick={navigateToSection}>Projects</a>
+          <a href="#skills" onClick={navigateToSection}>Skills</a>
+          <a href="#contact" onClick={navigateToSection}>Contact</a>
         </nav>
         <a className="nav-status" href="mailto:apand121@asu.edu" aria-label="Email Aayush Pandey">
           <span aria-hidden="true" /> 2027 internships
@@ -240,12 +256,12 @@ export default function Home() {
           <p className="hero-role">Software engineer / Electrical engineering at ASU</p>
           <p className="hero-summary">Backend systems, cloud platforms, AI/ML, data infrastructure, and developer tooling built to hold up outside the demo.</p>
           <div className="hero-actions">
-            <a href="#projects">View projects</a>
+            <a href="#projects" onClick={navigateToSection}>View projects</a>
             <a href="/Aayush-Pandey-Resume-2026.pdf" target="_blank" rel="noreferrer">View resume</a>
           </div>
         </div>
 
-        <a className="scroll-cue" href="#about" aria-label="Scroll to about section"><span>Scroll</span><i aria-hidden="true">↓</i></a>
+        <a className="scroll-cue" href="#about" onClick={navigateToSection} aria-label="Scroll to about section"><span>Scroll</span><i aria-hidden="true">↓</i></a>
       </section>
 
       <section className="about panel-section" id="about" aria-labelledby="about-title">
@@ -350,7 +366,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a href="#home">AP<span>.</span></a>
+        <a href="#home" onClick={navigateToSection}>AP<span>.</span></a>
         <p>Aayush Pandey / Software Engineer / Tempe, Arizona</p>
         <span>© 2026</span>
       </footer>
